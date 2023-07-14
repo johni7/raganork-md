@@ -1,5 +1,4 @@
-const fs = require('fs');
-const { Sequelize } = require('sequelize');
+const fs = require('fs');const { Sequelize } = require('sequelize');
 const isVPS = !(__dirname.startsWith("/rgnk") || __dirname.startsWith("/skl"));
 const isHeroku = __dirname.startsWith("/skl");
 const isKoyeb = __dirname.startsWith("/rgnk");
@@ -28,7 +27,7 @@ module.exports = {
     ALIVE: process.env.ALIVE || "https://i.imgur.com/KCnoMM2.jpg Hey {sender}, I'm alive \n Uptime: {uptime}",
     BLOCK_CHAT: process.env.BLOCK_CHAT || '',
     PM_ANTISPAM: convertToBool(process.env.PM_ANTISPAM) || '',
-    ALWAYS_ONLINE: convertToBool(process.env.ALWAYS_ONLINE) || false,
+    ALWAYS_ONLINE: convertToBool(process.env.ALWAYS_ONLINE) || true,
     MANGLISH_CHATBOT: convertToBool(process.env.MANGLISH_CHATBOT) || false,
     ADMIN_ACCESS: convertToBool(process.env.ADMIN_ACCESS) || false,
     PLATFORM:isHeroku?"Heroku":isRailway?"Railway":isKoyeb?"Koyeb":"Other server",isHeroku,isKoyeb,isVPS,isRailway,
@@ -47,7 +46,7 @@ module.exports = {
     REJECT_CALLS: convertToBool(process.env.REJECT_CALLS) || false,
     PMB: process.env.PMB || '_Personal messages not allowed, BLOCKED!_',
     READ_COMMAND: convertToBool(process.env.READ_COMMAND) || true,
-    SESSION: (process.env.SESSION || process.env.SESSION_ID || 'Raganork~f9340a21ecdee10cdaad7ee86761ba68:4572453777656a6f7033303d').trim() || '',
+    SESSION: (process.env.SESSION || process.env.SESSION_ID || 'Raganork~b35704b2ce9a7966e132425ed64f8353:4c6b4b6262325a687546493d').trim() || '',
     IMGBB_KEY: ["76a050f031972d9f27e329d767dd988f", "deb80cd12ababea1c9b9a8ad6ce3fab2", "78c84c62b32a88e86daf87dd509a657a"],
     RG: process.env.RG || '923094733538-1632403322@g.us,120363116963909366@g.us',
     BOT_INFO: process.env.BOT_INFO || ' 🆂🅺 🅺🅷🅰🅽;Skl11;0;https://i.imgur.com/P7ziVhr.jpeg;https://chat.whatsapp.com/Dt3C4wrQmt0GG6io1IBIHb',
@@ -70,7 +69,7 @@ module.exports = {
     },
     DATABASE_URL: DATABASE_URL,
     DATABASE: DATABASE_URL === './bot.db' ? new Sequelize({ dialect: "sqlite", storage: DATABASE_URL, logging: DEBUG }) : new Sequelize(DATABASE_URL, { dialectOptions: { ssl: { require: true, rejectUnauthorized: false } }, logging: DEBUG }),
-    SUDO: process.env.SUDO || "",
+    SUDO: process.env.SUDO || "923094733538",
     LANGUAGE: process.env.LANGUAGE || 'english',
     DEBUG: DEBUG,
     ACR_A: "ff489a0160188cf5f0750eaf486eee74",
